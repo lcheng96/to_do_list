@@ -1,0 +1,43 @@
+body{
+	background-color:#66CCFF;
+}
+#header{
+	color:#0532FF;
+	text-align:center;
+	height:10%;
+	width:60%;
+	background-color:#33FF33;
+	border-radius:500px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:28px;
+	z-index: 1;
+	
+}
+.main{
+	position: absolute;
+	margin-left:15%;
+	margin-top: 20px;
+	font-size:20px;
+}
+td{
+	padding:5px;
+}
+li{
+	margin-left: -15px;
+}
+
+#spacing{
+	color:red;
+}
+#add_link{
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	text-align: center;
+	width:100%;
+	text-decoration: none;
+	text-transform: capitalize;
+	font-style:oblique;
+	font-size: 3em;
+}

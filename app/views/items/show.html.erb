@@ -1,0 +1,19 @@
+<%= stylesheet_link_tag "formatting"%>
+<h1> A New Thing To Do: </h1>
+<p>
+  <strong>Event:</strong>
+  <%= @item.event %>
+  </p>
+  <p>
+   <strong>At time:  </strong>
+   <%= @item.time%>
+</p>
+ 
+<p>
+  <strong>Description	:</strong>
+  <%= @item.description %>
+</p>
+
+<%= link_to 'Back To the To-Do List', items_path %>
+
+<%= link_to 'Edit', edit_item_path(@item) %>
