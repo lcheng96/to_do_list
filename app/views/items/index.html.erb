@@ -1,4 +1,5 @@
 <%= stylesheet_link_tag "formatting"%>
+<%= javascript_include_tag 'jquery.dataTables' %>
 <div id="header">
 	<h1>To do list</h1>
 </div>
@@ -6,33 +7,60 @@
 <div id="add_link">
 	<%= link_to 'Add a New Event', new_item_path %>
 </div>
+<div id="add_link">
 
+</div>
 <div class="main">
 	<p>
 		Things you have so far:
 	</p>
 
-	<table>
+	<table id="to_do_table", class="display">
+			<thead>
 		<tr>
-			<td><strong>Event:</strong></td>
-			<td id="spacing"><strong> Time:</strong></td>
+		
+			<th><strong>Event:</strong></th>
+			<th id="spacing"><strong> Time:</strong></th>
+			<th id="spacing"><strong> Event Finished:</strong></th>
+			<th class="disable"></th>
+			<th class="disable"></th>
+			<th class="disable"></th>
 		</tr>
+			</thead>
+		<tbody>
 		<% @items.each do |article| %>
-		<ul>
 			<tr>
 				<td>
-				<li>
+			
 					<%= article.event %>
-				</li><td>
+				</td>
+				<td>
 				<p>
 					<%= article.time%>
+				</p>
+				</td>
+				<td>
+				<p>
+					<%= article.finished_event ? "Yes" : "No"%>
 				</p></td>
 				<td><%= link_to 'Show', item_path(article) %></td>
 				<td><%= link_to 'Edit', edit_item_path(article) %></td>
 				<td><%= link_to 'Delete', item_path(article),
 				method: :delete, data: { confirm: 'Are you sure you want to delete this event?' } %></td>
+
 			</tr>
-		</ul>
 		<% end %>
+		</tbody>
 	</table>
+  <script type="text/javascript">
+    $(document).ready( function () {
+	$('#to_do_table').DataTable({
+		"aoColumnDefs": [ { "bSortable": false, "aTargets": ["disable"]}
+    ]
+	});
+	
+	$} );
+
+  </script>
+	
 </div>

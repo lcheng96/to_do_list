@@ -13,7 +13,9 @@
   <strong>Description	:</strong>
   <%= @item.description %>
 </p>
-
+	<strong>Is this event finished? </strong>
+ 	<%= @item.finished_event ? "Yes" : "No"%>
+ 	<p></p>
 <%= link_to 'Back To the To-Do List', items_path %>
 
 <%= link_to 'Edit', edit_item_path(@item) %>

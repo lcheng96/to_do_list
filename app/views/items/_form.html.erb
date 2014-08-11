@@ -1,33 +1,41 @@
 <%= stylesheet_link_tag "formatting"%>
+
 <%= form_for @item do |f| %>
-  <% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@item.errors.count, "error") %> prohibited
-      this article from being saved:</h2>
-    <ul>
-    <% @item.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
-  <p>
+<% if @item.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@item.errors.count, "error") %> prohibited
+	this article from being saved:</h2>
+	<ul>
+		<% @item.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<p>
 	<%= f.label :event %>
 	<br>
 	<%= f.text_field :event %>
-</p>
-<p>
-	<%= f.label :time %>
 	<br>
-	<%= f.text_field :time %>
+	<pre>Year:   Month:       Day:     Hour:  Minutes: </pre>
+	<br>
+	<%= f.datetime_select(:time) %>
 </p>
 <p>
 	<%= f.label :description %>
 	<br>
-	<%= f.text_area :description %>
+	<%= f.text_area :description %>	
 </p>
+ <% if (params[:action] == "edit") %>
 
-<p>
+<%= f.label( "Have you finished this event?") %>
+<%= f.check_box(:finished_event, {class: 'item'}, true, false) %>
+<% end %>
+
+
+<p>	
 	<%= f.submit %>
 </p>
 <% end %>
